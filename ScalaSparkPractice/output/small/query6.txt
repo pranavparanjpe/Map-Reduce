@@ -1,0 +1,9 @@
+
+
+Title,Song Id,Hottness
+
+Immigrant Song Album Version,SOAAXAK12A8C13C030,1.0
+Nothin On You feat Bruno Mars Album Version,SOULTKQ12AB018A183,1.0
+This Christmas LP Version,SOTRSHW12A58A79E7C,0.9977584
+If Today Was Your Last Day Album Version,SOWFUUS12AB01800E7,0.98434675
+Harder To Breathe,SOOXLKF12A6D4F594A,0.9798372

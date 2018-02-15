@@ -1,0 +1,9 @@
+
+
+Artist Id,Name,Count
+
+AROIHOI122988FEB8E,Mario Rosenstock,13
+ARIRD6J1187FB5A98C,Sugar Minott,12
+AR12F2S1187FB56EEF,Aerosmith,12
+AR9W3X91187FB3994C,Phil Collins,12
+AREWQSE1187B9AEC6C,The Jackson Southernaires,12

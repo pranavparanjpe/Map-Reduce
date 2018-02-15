@@ -1,0 +1,25 @@
+
+Query:Time(in milliseconds)
+
+
+Query1: 58225
+
+Query2: 14561
+
+Query3: 32716
+
+Query4: 34291
+
+Query5: 25272
+
+Query6: 37343
+
+Query7: 22736
+
+Query8: 670276
+
+Query9: 17905
+
+Query10: 19740
+
+Query11: 20658

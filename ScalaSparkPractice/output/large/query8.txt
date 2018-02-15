@@ -1,0 +1,9 @@
+
+
+Artist Term,Average Hottness
+
+christmas songs,0.6083985
+kotekote,0.60222054
+musical soundtrack,0.58576214
+girl rockers,0.5737627
+alternative latin,0.57375675

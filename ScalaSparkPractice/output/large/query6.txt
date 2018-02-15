@@ -1,0 +1,9 @@
+
+
+Title,Song Id,Hottness
+
+Many Of Horror,SOVWHPM12AB017DABB,1.0
+Halfway Gone,SOMFTNM12A8C1434C3,1.0
+Stronger,SOWFAZC12A8C13D4B9,1.0
+Cooler Than Me,SOBQYCF12AC909726F,1.0
+Seven Nation Army Album Version,SOAUFOF12AB0180C65,1.0

@@ -1,0 +1,9 @@
+
+
+Word,Count
+
+version,59385
+album,35663
+love,28666
+live,17297
+lp,17165

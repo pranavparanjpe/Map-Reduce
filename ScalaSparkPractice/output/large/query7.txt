@@ -1,0 +1,9 @@
+
+
+Title,Artist Id,Hottness
+
+ARRH63Y1187FB47783,Kanye West  Kid Cudi,1.0825026
+ARRH63Y1187FB47783,Kanye West  John Legend  Consequence,1.0825026
+ARRH63Y1187FB47783,Kanye West  Nas  Really Doe,1.0825026
+ARRH63Y1187FB47783,Kanye West  JayZ,1.0825026
+ARRH63Y1187FB47783,Kanye West  Talib Kweli  QTip  Common  Rhymefest,1.0825026

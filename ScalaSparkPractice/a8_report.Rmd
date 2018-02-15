@@ -1,0 +1,170 @@
+---
+title: "a8"
+author: "pranav"
+date: "November 12, 2017"
+output:
+  pdf_document: default
+    
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library('xtable')
+library('ggplot2')
+
+```
+
+## Objective
+Given the Million Song dataset,the task is to write a spark porgram that computes some queries on the dataset.-
+* number of distinct songs, artists, and albums
+* top 5 loudest songs
+* top 5 longest songs
+* top 5 fastest songs
+* top 5 most familiar artists
+* top 5 hottest songs
+* top 5 hottest artists
+* top 5 hottest genres (mean artists hotness in artist_term)
+* top 5 most popular keys (must have confidence > 0.7)
+* top 5 most prolific artists (include ex-equo items, if any)
+* top 5 most common words in song titles (excluding articles, prepositions, conjunctions)
+
+## Dataset
+The dataset given is the million Song dataset. The dataset is not completely clean and needs to be handled.The output of the subset Million Song dataset is in the output/small folder. 
+
+### Execution environment
+
+* Operating System - Windows 10
+* Java version - 1.8.0_131
+* Processor -2
+* 4 logical processors 2GHz
+
+
+### Problem 1
+Problem 1 consists of 3 queries. Hence,the total running time of problem 1 is slightly higher than the other queries since 3 different queries are fired to get the distinct outputs.Runtime is ** 65727 ms** The output of problem 1 is-
+
+```{r echo=F,results='asis',error=F,warning=F}
+
+library('knitr')
+
+#setwd("C:/Users/Pranav Paranjpe/Documents/GitHub/a8-pranav/untitled")
+cat(readLines('./output/large/query1.txt'), sep = '\n')
+
+
+```
+
+### Problem 2
+Problem 2 outputs the loudest songs in descending order. This is a basic map and sort query on the RDD to get the result which is same for problems 3-7. Runtime ** 15759ms**
+
+```{r echo=F,results='asis',error=F,warning=F}
+
+output_data <- read.csv("./output/large/query2.txt")
+#output_data<-gsub("[^[:alnum:]///' ]", "", output_data)
+#iconv(output_data, "latin1", "ASCII", sub="")
+print(xtable(output_data,auto = TRUE,align=c('p{1cm}','p{3in}','p{2in}','p{2in}')),comment=FALSE,floating=FALSE)
+```
+
+### Problem 3
+Simliar to problem 2,but with different parameters to output. The query runs efficiently.
+Runtime: ** 24568ms**The top 5 longest songs are-
+```{r echo=F,results='asis',error=F,warning=F}
+library('xtable')
+output_data <- read.csv("./output/large/query3.txt")
+#output_data<-iconv(output_data, "latin1", "ASCII", sub="")
+print(xtable(output_data,auto = TRUE,align=c('p{1cm}','p{3in}','p{2in}','p{2in}')),comment=FALSE)
+```
+
+### Problem 4
+Runtime: ** 35953ms**.The top 5 fastest songs are-
+```{r echo=F,results='asis',error=F,warning=F}
+
+output_data <- read.csv("./output/large/query4.txt")
+#output_data<-iconv(output_data, "latin1", "ASCII", sub="")
+print(xtable(output_data,auto = TRUE,align=c('p{1cm}','p{3in}','p{2in}','p{2in}')),comment=FALSE)
+
+```
+
+### Problem 5
+Runtime:** 22725ms**.The top 5 most familiar artists are-
+```{r echo=F,results='asis',error=F,warning=F}
+
+output_data <- read.csv("./output/large/query5.txt")
+#output_data<-iconv(output_data, "latin1", "ASCII", sub="")
+print(xtable(output_data,auto = TRUE,align=c('p{1cm}','p{3in}','p{2in}','p{2in}')),comment=FALSE,floating=FALSE)
+
+```
+
+### Problem 6
+Runtime:** 37124ms**.The top 5 hottest songs are-
+```{r echo=F,results='asis',error=F,warning=F}
+
+output_data <- read.csv("./output/large/query6.txt")
+#output_data<-iconv(output_data, "latin1", "ASCII", sub="")
+print(xtable(output_data,auto = TRUE,align=c('p{1cm}','p{3in}','p{2in}','p{2in}')),comment=FALSE,floating=FALSE)
+
+```
+\newpage
+### Problem 7
+
+Runtime:** 21005ms**.The top 5 hottest artists are-
+
+```{r echo=F,results='asis',error=F,warning=F}
+
+output_data <- read.csv("./output/large/query7.txt")
+#output_data<-iconv(output_data, "latin1", "ASCII", sub="")
+print(xtable(output_data,auto = TRUE,align=c('p{1cm}','p{3in}','p{2in}','p{2in}')),comment=FALSE)
+```
+
+### Problem 8
+This query takes the longest time to execute. This is because the query joins two tables which are in MB of data. Since my machine does not have enough space,the parallel execution is very limited and many mempry blocks fail because of memory restrictions.Even with a better machine,the query time would be longer than the other queries since joinig is an expensive process compared to others. Runtime:** 756041ms**.
+the top 5 hottest genres are-
+```{r echo=F,results='asis',error=F,warning=F}
+
+output_data <- read.csv("./output/large/query8.txt")
+#output_data<-iconv(output_data, "latin1", "ASCII", sub="")
+print(xtable(output_data,auto = TRUE,align=c('p{1cm}','p{3in}','p{2in}')),comment=FALSE)
+
+
+```
+
+
+### Problem 9
+This query first filters out data based on confidence and then performs standard map task to get the count of the highest keys.Runtime:** 9386ms**.The top 5 most popular keys are-
+
+```{r echo=F,results='asis',error=F,warning=F}
+output_data <- read.csv("./output/large/query9.txt")
+#output_data<-iconv(output_data, "latin1", "ASCII", sub="")
+print(xtable(output_data,auto = TRUE,align=c('p{1cm}','p{3in}','p{3in}')),comment=FALSE)
+
+```
+
+### Problem 10
+Runtime:  ** 18092ms**  .The top 5 most prolific artists are grouped by the artistId and name and then taking the count-
+```{r echo=F,results='asis',error=F,warning=F}
+output_data <- read.csv("./output/large/query10.txt")
+#output_data<-iconv(output_data, "latin1", "ASCII", sub="")
+print(xtable(output_data,auto = TRUE,align=c('p{1cm}','p{3in}','p{2in}','p{2in}')),comment=FALSE,floating=FALSE)
+```
+
+
+### Problem 11
+This first converts the RDD to a flatmap structure and filters out the blanks after which it calculates the count of words.Runtime:  ** 11975ms**.
+```{r echo=F,results='asis',error=F,warning=F}
+output_data <- read.csv("./output/large/query11.txt")
+#output_data<-iconv(output_data, "latin1", "ASCII", sub="")
+print(xtable(output_data,auto = TRUE,align=c('p{1cm}','p{3in}','p{3in}')),comment=FALSE,floating=FALSE)
+
+```
+## Runtime
+The actual runtimes can be found in the output/runtime.txt files. Because of limited space issues,there were many failed RDD's which increased the duration of the execution. The 1st and the 3rd queries take longest because of join/multiple queries.
+
+```{r echo=F,results='asis',error=F,warning=F}
+output_data<-read.csv("./output/large/runtime.txt",sep = ':')
+output_data$Query <- factor(output_data$Query, levels = output_data$Query)
+output_data$Time<-as.numeric(as.character(output_data$Time))
+#output_data$Time <- factor(output_data$Time, levels = output_data$Time)
+ggplot(data=output_data,aes(x =Query, y = Time,group = 1))+geom_point()+geom_line()
+
+```
+
+##Conclusion
+Spark in general is faster than map-reduce and better for interactive analysis and data analytics. This is because spark uses in-memory execution which eliminates loading times.After the first time,RDD's are persisted and hence can be easily operated upon. However,there are better ways to achieve the tasks done in this assignment with the use of SPARK-SQL since they reduce the complexity allowing the use of normal SQL-queries.
